@@ -42,7 +42,7 @@ const http = require('http');
 // })
 
 
-const html = fs.readFileSync('./Public/index.html', 'utf-8')
+const html = fs.readFileSync('./index.html', 'utf-8')
 let posts = JSON.parse(fs.readFileSync('./Data/posts.json', 'utf-8'));
 let postCatalogueHtml = fs.readFileSync('./Public/post-catalogue.html', 'utf-8');
 
