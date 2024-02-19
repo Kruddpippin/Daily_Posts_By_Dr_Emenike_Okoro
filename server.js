@@ -43,7 +43,7 @@ const http = require('http');
 
 
 const html = fs.readFileSync('./index.html', 'utf-8')
-let posts = JSON.parse(fs.readFileSync('./Data/posts.json', 'utf-8'));
+let posts = JSON.parse(fs.readFileSync('./posts.json', 'utf-8'));
 let postCatalogueHtml = fs.readFileSync('./post-catalogue.html', 'utf-8');
 
 let postsHtmlArray = posts.map((thePost) =>{
