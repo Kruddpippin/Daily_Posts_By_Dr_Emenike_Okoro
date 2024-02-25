@@ -48,19 +48,22 @@ const url = require('url'); //This url is to control query strings for the page
 const html = fs.readFileSync('./index.html', 'utf-8')
 let posts = JSON.parse(fs.readFileSync('./posts.json', 'utf-8'));
 let postCatalogueHtml = fs.readFileSync('./post-catalogue.html', 'utf-8');
+let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8');
 
-//This postHtmlArray is the variable that contains the mapping for the contents of the posts.json objects
+//This postDetailsHtml is the variable that contains the mapping for the contents of the posts-details.json objects
 
 
 function replaceHtml(template, post){
-    let output = postCatalogueHtml.replace('{Post_Placeholder}', thePost.title); //shows the title of the post
-        output = output.replace('{Image_Placeholder}', thePost.dailyImage); //shows the image
-        output = output.replace('{ID}', thePost.id); //shows the id
+    let output = template.replace('{Post_title_Placeholder}', post.title); //shows the title of the post
+        output = output.replace('{Image_Placeholder}', post.dailyImage); //shows the image
+        output = output.replace('{ID}', post.id); //shows the id
+        //output = output.replace('{Post_Placeholder}', post.title); //post title displayed
+        output = output.replace('{dailyPost}', post.dailyPost); //shows the daily Post
 
         return output;
-}
+};
 // Create a server
-// Step 1: Create
+// Step 1: Create 
 
 //This handles everything that has to do with URL 
 const server = http.createServer((request, response) => {
@@ -82,13 +85,17 @@ const server = http.createServer((request, response) => {
     else if (path.toLocaleLowerCase() === '/posts') {
         
         if(!query.id){ //this checks for a query string before executing the next line.
-            let postHtmlArray =  posts.map((thePost) => {
-              replaceHtml(postCatalogueHtml, thePost);
+            let postsHtmlArray = posts.map((thePost) => {
+              return replaceHtml(postCatalogueHtml, thePost); 
             })
-            let postsResponseHtml = html.replace('{Placeholder}', postsHtmlArray.join(','));
+            let postsResponseHtml = html.replace('{Placeholder}', postsHtmlArray.join('  '));
         response.writeHead(200, {'content-type': 'text/html'});
         response.end(postsResponseHtml);}
-        else{response.end('You are viewing post with ID ' + query.id)}
+        
+        else{
+            let thePost = posts[query.id]
+            let postDetailsResponseHtml = replaceHtml(postDetailsHtml, thePost)
+            response.end(html.replace('{Placeholder}', postDetailsResponseHtml))};
     }
     
 

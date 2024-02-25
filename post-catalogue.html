@@ -1,14 +1,8 @@
 
         <div class="post" id="post-container">
-            <div class="post-image"> <img src={Image_Placeholder} alt=" No Image Available"></div>
-           <p style="text-align: left;"><h5>{Post_Placeholder}</h5></p>
-           <button class="btn-copy">Copy Text</button>
-            <select name="post-opinion" id="post-opinion">
-                <option value disabled selected hidden>Your Opinion</option>
-                <option value="Posted">Posted</option>
-                <option value="not-posted">I don't like this</option>
-                <option value="add-more">Add more content</option>
-            </select>
-            <a href="/posts?id={ID}" class="btn-submit">Show Post</a>
+            <div class="post-image"> <img src={Image_Placeholder} width="280" height="320" alt=" "></div>
+           <p style="text-align: left;"><h5>{Post_title_Placeholder}</h5></p>
+           
+            <a style="padding: 12px;" href="/posts?id={ID}" class="btn-submit">Show Post</a><br><br>
         </div>
         
