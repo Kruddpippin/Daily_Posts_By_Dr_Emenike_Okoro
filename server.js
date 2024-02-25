@@ -3,9 +3,11 @@ const readline = require('readline');
 const fs = require('fs'); //this module enables us read files i.e 'file system'
 const http = require('http'); //http module
 const url = require('url'); //This url is to control query strings for the page
-//User modules
-const replaceHtml = require('./Modules/replaceHtml')
+const events = require('events');
 
+//User/custom modules
+const replaceHtml = require('./Modules/replaceHtml')
+const user = require('./Modules/user');
 
 // /*Read files using node js */
 
@@ -182,6 +184,19 @@ server.on('request', (request, response) =>{
 
 //Step 2: Start the server
 server.listen(5000, '127.0.0.1', () => {
-    console.log('The server is up and running!');
+    //console.log('The server is up and running!');
 });
 
+
+
+let kruddEmitter = new user();
+
+kruddEmitter.on('userCreated', (id, name) =>{
+    console.log(`A new user: ${name} with ID: ${id} has been created`)
+})
+
+kruddEmitter.on('userCreated', (id, name) =>{
+    console.log(`A new user: ${name} with ID: ${id} has been added to the database`)
+})
+
+kruddEmitter.emit('userCreated', 101, 'Frank');
