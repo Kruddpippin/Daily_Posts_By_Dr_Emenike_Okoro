@@ -55,7 +55,7 @@ let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8');
 
 function replaceHtml(template, post){
     let output = template.replace('{Post_title_Placeholder}', post.title); //shows the title of the post
-        output = output.replace('{Image_Placeholder}', post.dailyImage); //shows the image
+        output = output.replace('{Image}', post.dailyImage); //shows the image
         output = output.replace('{ID}', post.id); //shows the id
         //output = output.replace('{Post_Placeholder}', post.title); //post title displayed
         output = output.replace('{dailyPost}', post.dailyPost); //shows the daily Post
@@ -91,7 +91,7 @@ const server = http.createServer((request, response) => {
             let postsResponseHtml = html.replace('{Placeholder}', postsHtmlArray.join('  '));
         response.writeHead(200, {'content-type': 'text/html'});
         response.end(postsResponseHtml);}
-        
+
         else{
             let thePost = posts[query.id]
             let postDetailsResponseHtml = replaceHtml(postDetailsHtml, thePost)
