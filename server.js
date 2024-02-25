@@ -68,14 +68,70 @@ let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8');
 // Step 1: Create 
 
 //This handles everything that has to do with URL 
-const server = http.createServer((request, response) => {
-    //adding query names for resources
-    let {query, pathname: path} = url.parse(request.url, true)
-    // console.log(x);
-    // let path = request.url;
+// const server = http.createServer((request, response) => {
+//     //adding query names for resources
+//     let {query, pathname: path} = url.parse(request.url, true)
+//     // console.log(x);
+//     // let path = request.url;
 
     
     
+//     //  Routing for nav bar
+//     if (path === '/' || path.toLocaleLowerCase() === '/home') {
+//         response.writeHead(200, {
+//             'content-type': 'text/html',
+//             'krudd-header': 'Nice one Chief'
+//         });
+//         response.end(html.replace('{Placeholder}', 'You are in Home Page'));} 
+    
+//     else if (path.toLocaleLowerCase() === '/posts') {
+        
+//         if(!query.id){ //this checks for a query string before executing the next line.
+//             let postsHtmlArray = posts.map((thePost) => {
+//               return replaceHtml(postCatalogueHtml, thePost); 
+//             })
+//             let postsResponseHtml = html.replace('{Placeholder}', postsHtmlArray.join('  '));
+//         response.writeHead(200, {'content-type': 'text/html'});
+//         response.end(postsResponseHtml);}
+
+//         else{
+//             let thePost = posts[query.id]
+//             let postDetailsResponseHtml = replaceHtml(postDetailsHtml, thePost)
+//             response.end(html.replace('{Placeholder}', postDetailsResponseHtml))};
+//     }
+    
+
+//     else if (path === '/The_Man') {
+//         response.writeHead(200, {
+//             'content-type': 'text/html',
+//             'krudd-header': 'Nice one Chief'
+//         });
+//         response.end(html.replace('{Placeholder}', 'You are in Profiles Page'))}
+
+    
+//     else if (path.toLocaleLowerCase() === '/contact') {
+//         response.writeHead(200, {
+//             'content-type': 'text/html',
+//             'krudd-header': 'Nice one Chief'});
+
+//         response.end(html.replace('{Placeholder}', 'You are in Contact Page'))}
+
+//     else {
+//         response.writeHead(404, {
+//             'content-type': 'text/html',
+//             'krudd-header': 'Nice one Chief'});
+
+//         response.end('Error 404: Not Found');}
+// });
+
+
+const server = http.createServer();
+
+server.on('request', (request, response) =>{
+    let {query, pathname: path} = url.parse(request.url, true)
+    // console.log(x);
+    // let path = request.url;
+  
     //  Routing for nav bar
     if (path === '/' || path.toLocaleLowerCase() === '/home') {
         response.writeHead(200, {
@@ -122,7 +178,7 @@ const server = http.createServer((request, response) => {
             'krudd-header': 'Nice one Chief'});
 
         response.end('Error 404: Not Found');}
-});
+})
 
 
 //Step 2: Start the server
