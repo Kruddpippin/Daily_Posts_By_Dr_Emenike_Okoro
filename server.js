@@ -1,8 +1,10 @@
+//CORE MODULES
 const readline = require('readline');
 const fs = require('fs'); //this module enables us read files i.e 'file system'
 const http = require('http'); //http module
 const url = require('url'); //This url is to control query strings for the page
-
+//User modules
+const replaceHtml = require('./Modules/replaceHtml')
 
 
 // /*Read files using node js */
@@ -53,15 +55,15 @@ let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8');
 //This postDetailsHtml is the variable that contains the mapping for the contents of the posts-details.json objects
 
 
-function replaceHtml(template, post){
-    let output = template.replace('{Post_title_Placeholder}', post.title); //shows the title of the post
-        output = output.replace('{Image}', post.dailyImage); //shows the image
-        output = output.replace('{ID}', post.id); //shows the id
-        //output = output.replace('{Post_Placeholder}', post.title); //post title displayed
-        output = output.replace('{dailyPost}', post.dailyPost); //shows the daily Post
+// function replaceHtml(template, post){
+//     let output = template.replace('{Post_title_Placeholder}', post.title); //shows the title of the post
+//         output = output.replace('{Image}', post.dailyImage); //shows the image
+//         output = output.replace('{ID}', post.id); //shows the id
+//         //output = output.replace('{Post_Placeholder}', post.title); //post title displayed
+//         output = output.replace('{dailyPost}', post.dailyPost); //shows the daily Post
 
-        return output;
-};
+//         return output;
+// };
 // Create a server
 // Step 1: Create 
 
