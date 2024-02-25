@@ -138,6 +138,7 @@ server.on('request', (request, response) =>{
         });
         response.end(html.replace('{Placeholder}', 'You are in Home Page'));} 
     
+        //Post Nav
     else if (path.toLocaleLowerCase() === '/posts') {
         
         if(!query.id){ //this checks for a query string before executing the next line.
