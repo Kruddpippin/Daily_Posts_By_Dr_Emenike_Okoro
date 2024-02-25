@@ -50,9 +50,7 @@ const replaceHtml = require('./Modules/replaceHtml')
 const html = fs.readFileSync('./index.html', 'utf-8')
 let posts = JSON.parse(fs.readFileSync('./posts.json', 'utf-8'));
 let postCatalogueHtml = fs.readFileSync('./post-catalogue.html', 'utf-8');
-let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8');
-
-//This postDetailsHtml is the variable that contains the mapping for the contents of the posts-details.json objects
+let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8'); //This postDetailsHtml is the variable that contains the mapping for the contents of the posts-details.json objects
 
 
 // function replaceHtml(template, post){
@@ -178,11 +176,11 @@ server.on('request', (request, response) =>{
             'krudd-header': 'Nice one Chief'});
 
         response.end('Error 404: Not Found');}
-})
+});
 
 
 //Step 2: Start the server
 server.listen(5000, '127.0.0.1', () => {
     console.log('The server is up and running!');
-})
+});
 
