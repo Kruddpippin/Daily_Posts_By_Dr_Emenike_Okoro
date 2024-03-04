@@ -138,7 +138,7 @@ server.on('request', (request, response) =>{
             'content-type': 'text/html',
             'krudd-header': 'Nice one Chief'
         });
-        response.end(html.replace('{Placeholder}', 'You are in Home Page'));} 
+        response.end(html.replace('{Placeholder}', 'Home Page'));} 
     
         //Post Nav
     else if (path.toLocaleLowerCase() === '/posts') {
