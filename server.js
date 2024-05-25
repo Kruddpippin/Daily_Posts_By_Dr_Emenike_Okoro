@@ -49,7 +49,7 @@ const user = require('./Modules/user');
 // })
 
 
-const html = fs.readFileSync('./index.html', 'utf-8')
+const html = fs.readFileSync('index.html', 'utf-8')
 let posts = JSON.parse(fs.readFileSync('./posts.json', 'utf-8'));
 let postCatalogueHtml = fs.readFileSync('./post-catalogue.html', 'utf-8');
 let postDetailsHtml = fs.readFileSync('./post-details.html', 'utf-8'); //This postDetailsHtml is the variable that contains the mapping for the contents of the posts-details.json objects
@@ -141,7 +141,7 @@ server.on('request', (request, response) =>{
         response.end(html.replace('{Placeholder}', 'Home Page'));} 
     
         //Post Nav
-    else if (path.toLocaleLowerCase() === '/posts') {
+    else if (path === '/Posts_Section') {
         
         if(!query.id){ //this checks for a query string before executing the next line.
             let postsHtmlArray = posts.map((thePost) => {
