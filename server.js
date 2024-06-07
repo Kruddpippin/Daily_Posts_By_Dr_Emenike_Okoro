@@ -9,45 +9,6 @@ const events = require('events');
 const replaceHtml = require('./Modules/replaceHtml')
 const user = require('./Modules/user');
 
-// /*Read files using node js */
-
-
-
-
-
-
-
-// /*Reading and writing to a file*/
-
-// /*Reading a file*/
-// let textIn = fs.readFileSync('./Files/input.txt', 'utf-8');
-// console.log(textIn)
-
-// /*Writing to a file*/
-// let content = `Data read from input.txt: ${textIn} \nDate created ${new Date()}`
-// fs.writeFileSync('./Files/output.txt', content);
-
-
-
-
-
-
-
-// const rl=readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// })
-
-// rl.question('Are you ready?: ', (answer) => {
-//     console.log('You answered: ' +answer);
-//     rl.close();
-// })
-
-// rl.on('close', () => {
-//     console.log('Interface closed');
-//     process.exit(0);
-// })
-
 
 const html = fs.readFileSync('index.html', 'utf-8')
 let posts = JSON.parse(fs.readFileSync('./posts.json', 'utf-8'));
